@@ -1,0 +1,22 @@
+package com.example.pokemonapp.entities;
+
+import jakarta.persistence.*;
+import lombok.Data;
+
+@Entity
+@Data
+public class Pokemon {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nom;
+    private String type;
+    private int niveau;
+    private int attaque;
+    private int defense;
+    private String rarete;
+
+    @ManyToOne
+    @JoinColumn(name = "dresseur_id")
+    private Dresseur dresseur;
+}
