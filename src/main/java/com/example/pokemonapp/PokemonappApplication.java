@@ -30,7 +30,7 @@ public class PokemonappApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		if (dresseurRepository.count() == 0) {
-			// --- Création de dresseurs ---
+			// Création de dresseurs
 			Dresseur sacha = new Dresseur();
 			sacha.setNom("Ketchum");
 			sacha.setPseudo("Sacha");
@@ -43,7 +43,7 @@ public class PokemonappApplication implements CommandLineRunner {
 
 			dresseurRepository.saveAll(Arrays.asList(sacha, ondine));
 
-			// --- Création de pokémons ---
+			// Création de pokémons
 			Pokemon pikachu = new Pokemon();
 			pikachu.setNom("Pikachu");
 			pikachu.setType("Électrik");
@@ -83,7 +83,7 @@ public class PokemonappApplication implements CommandLineRunner {
 			List<Pokemon> pokemons = Arrays.asList(pikachu, bulbizarre, carapuce, salameche);
 			pokemonRepository.saveAll(pokemons);
 
-			// --- Création d’un booster fictif pour Sacha ---
+			// Création d’un booster fictif pour Sacha
 			Booster booster1 = new Booster();
 			booster1.setDateOuverture(LocalDate.now());
 			booster1.setDresseur(sacha);
