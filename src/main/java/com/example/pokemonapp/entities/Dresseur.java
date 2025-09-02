@@ -13,7 +13,11 @@ public class Dresseur {
     private String nom;
     private String pseudo;
     private int niveau;
+    private String role;
 
-    @OneToMany(mappedBy = "dresseur", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "dresseur")
     private List<Pokemon> pokemons;
+
+    @OneToMany(mappedBy = "dresseur")
+    private List<Booster> boosters;
 }

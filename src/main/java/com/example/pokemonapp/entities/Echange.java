@@ -8,6 +8,7 @@ import java.util.List;
 @Entity
 @Data
 public class Echange {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -40,4 +41,5 @@ public class Echange {
             inverseJoinColumns = @JoinColumn(name = "carte_id")
     )
     private List<Pokemon> cartesDresseur2;
+
 }

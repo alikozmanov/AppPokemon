@@ -25,4 +25,5 @@ public class Booster {
             inverseJoinColumns = @JoinColumn(name = "pokemon_id")
     )
     private List<Pokemon> cartes;
+
 }

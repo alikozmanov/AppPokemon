@@ -33,8 +33,8 @@ public class EchangeController {
     }
 
     @PutMapping("/{id}/accepter")
-    public ResponseEntity<Echange> accepter(@PathVariable Long id) {
-        Echange e = service.accepter(id);
+    public ResponseEntity<Echange> accepter(@PathVariable Long id, @RequestBody Long dresseurId) {
+        Echange e = service.accepter(id, dresseurId);
         return e != null ? ResponseEntity.ok(e) : ResponseEntity.notFound().build();
     }
 
