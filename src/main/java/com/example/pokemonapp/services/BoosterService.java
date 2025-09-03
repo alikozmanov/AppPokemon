@@ -1,13 +1,7 @@
 package com.example.pokemonapp.services;
 
-import com.example.pokemonapp.entities.Booster;
-import com.example.pokemonapp.entities.Collection;
-import com.example.pokemonapp.entities.Dresseur;
-import com.example.pokemonapp.entities.Pokemon;
-import com.example.pokemonapp.repositories.BoosterRepository;
-import com.example.pokemonapp.repositories.CollectionRepository;
-import com.example.pokemonapp.repositories.DresseurRepository;
-import com.example.pokemonapp.repositories.PokemonRepository;
+import com.example.pokemonapp.entities.*;
+import com.example.pokemonapp.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,32 +13,19 @@ import java.util.Random;
 @Service
 public class BoosterService {
 
-    @Autowired
-    private BoosterRepository boosterRepo;
-
-    @Autowired
-    private DresseurRepository dresseurRepo;
-
-    @Autowired
-    private PokemonRepository pokemonRepo;
-
-    @Autowired
-    private CollectionRepository collectionRepo;
+    @Autowired private BoosterRepository boosterRepo;
+    @Autowired private DresseurRepository dresseurRepo;
+    @Autowired private PokemonRepository pokemonRepo;
+    @Autowired private CollectionRepository collectionRepo;
 
     private static final String[] NOMS = {"Pikachu","Salamèche","Carapuce","Bulbizarre","Roucool","Mewtwo"};
     private static final String[] TYPES = {"Électrik","Feu","Eau","Plante","Normal","Psy"};
     private static final String[] RARETES = {"Commune","Peu Commune","Rare","Légendaire"};
-
     private Random random = new Random();
 
     public Booster ouvrirBooster(Long dresseurId) {
         Dresseur dresseur = dresseurRepo.findById(dresseurId)
                 .orElseThrow(() -> new RuntimeException("Dresseur introuvable"));
-
-        // Vérification utilisateur connecté
-        if (!"DRESSEUR".equals(dresseur.getRole()) && !"ADMIN".equals(dresseur.getRole())) {
-            throw new RuntimeException("Utilisateur non autorisé à ouvrir un booster");
-        }
 
         Booster booster = new Booster();
         booster.setDateOuverture(LocalDate.now());
@@ -63,7 +44,7 @@ public class BoosterService {
             pokemonRepo.save(p);
             cartes.add(p);
 
-            // Ajout à la collection du dresseur
+            // Ajout à la collection
             Collection c = new Collection();
             c.setDresseur(dresseur);
             c.setCarte(p);

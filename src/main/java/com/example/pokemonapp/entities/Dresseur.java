@@ -10,10 +10,14 @@ public class Dresseur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nom;
     private String pseudo;
     private int niveau;
     private String role;
+
+    private String username;
+    private String password;
 
     @OneToMany(mappedBy = "dresseur")
     private List<Pokemon> pokemons;
