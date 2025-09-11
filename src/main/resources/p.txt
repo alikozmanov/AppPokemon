@@ -327,11 +327,24 @@ Echange 1 <------> 1 Carte (id_carte1 et id_carte2)
 Deux types d’acteurs : Dresseur et Administrateur
 Échanges vérifient niveau et rareté et nécessitent double acceptation
 
-
-Maquette : Pokémon Collector, 3 maquettes principales :
+------------------------------------------------------------------
+Maquette telephone : Pokémon Collector, 3 maquettes principales :
 
            Page d’accueil → choix entre Gérer Pokémon, Gérer profil, Échanges, Administration.
 
            Écran d’ouverture d’un booster → bouton “Ouvrir booster” + affichage des 10 cartes tirées.
 
            Écran d’échanges → liste des propositions, bouton Proposer un échange, bouton Accepter.
+
+
+-----------------------------------------------------------------
+Maquette PC le zoning (répartition des zones) et le wireframe (blocs fonctionnels détaillés) :
+            Header → présent avec le titre, la zone de recherche et l’icône utilisateur.
+
+            Sidebar gauche → avec les 4 menus (Gérer Pokémon, Gérer profil, Échanges, Administration).
+
+            Zone centrale → section Ouvrir booster + grille de cartes.
+
+            Colonne droite → section Échanges avec cartes et bouton Accepter.
+
+            Footer → avec Mentions légales et Support.
