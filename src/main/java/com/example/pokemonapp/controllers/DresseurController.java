@@ -18,6 +18,7 @@ public class DresseurController {
 
     @GetMapping
     public List<Dresseur> getAll() {
+
         return service.lister();
     }
 
@@ -30,6 +31,7 @@ public class DresseurController {
 
     @PostMapping
     public Dresseur creer(@RequestBody Dresseur d) {
+
         return service.sauvegarder(d);
     }
 

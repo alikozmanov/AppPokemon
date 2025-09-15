@@ -15,18 +15,22 @@ public class DresseurService {
     private DresseurRepository repo;
 
     public List<Dresseur> lister() {
+
         return repo.findAll();
     }
 
     public Optional<Dresseur> rechercher(Long id) {
+
         return repo.findById(id);
     }
 
     public Dresseur sauvegarder(Dresseur d) {
+
         return repo.save(d);
     }
 
     public void supprimer(Long id) {
+
         repo.deleteById(id);
     }
 }

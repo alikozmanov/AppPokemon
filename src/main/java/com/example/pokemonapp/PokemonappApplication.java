@@ -24,6 +24,7 @@ public class PokemonappApplication implements CommandLineRunner {
 	private BoosterRepository boosterRepository;
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(PokemonappApplication.class, args);
 	}
 

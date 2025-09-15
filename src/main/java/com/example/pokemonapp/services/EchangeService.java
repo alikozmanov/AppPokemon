@@ -21,10 +21,12 @@ public class EchangeService {
     }
 
     public List<Echange> lister() {
+
         return repo.findAll();
     }
 
     public Optional<Echange> rechercher(Long id) {
+
         return repo.findById(id);
     }
 

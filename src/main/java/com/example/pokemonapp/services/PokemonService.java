@@ -24,10 +24,12 @@ public class PokemonService {
     }
 
     public void supprimer(Long id) {
+
         pokemonRepo.deleteById(id);
     }
 
     public Optional<Pokemon> rechercher(Long id) {
+
         return pokemonRepo.findById(id);
     }
 }

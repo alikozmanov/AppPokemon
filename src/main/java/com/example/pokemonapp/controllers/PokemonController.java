@@ -17,10 +17,12 @@ public class PokemonController {
     private PokemonService pokemonService;
 
     @GetMapping
-    public List<Pokemon> getAll() { return pokemonService.lister(); }
+    public List<Pokemon> getAll() {
+        return pokemonService.lister(); }
 
     @PostMapping
-    public Pokemon addPokemon(@RequestBody Pokemon p) { return pokemonService.ajouter(p); }
+    public Pokemon addPokemon(@RequestBody Pokemon p) {
+        return pokemonService.ajouter(p); }
 
     @GetMapping("/{id}")
     public ResponseEntity<Pokemon> getPokemon(@PathVariable Long id) {

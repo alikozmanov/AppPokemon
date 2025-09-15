@@ -18,12 +18,14 @@ public class BoosterController {
     // Ouvrir un booster pour un dresseur
     @PostMapping("/ouvrir/{dresseurId}")
     public Booster ouvrir(@PathVariable Long dresseurId) {
+
         return boosterService.ouvrirBooster(dresseurId);
     }
 
     // Lister tous les boosters ouverts
     @GetMapping
     public List<Booster> getAll() {
+
         return boosterService.lister();
     }
 }
