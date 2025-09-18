@@ -2,6 +2,7 @@ package com.example.pokemonapp.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Data
@@ -18,5 +19,6 @@ public class Pokemon {
 
     @ManyToOne
     @JoinColumn(name = "dresseur_id")
+    @JsonBackReference
     private Dresseur dresseur;
 }

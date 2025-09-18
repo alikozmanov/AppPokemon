@@ -3,6 +3,7 @@ package com.example.pokemonapp.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Data
@@ -20,8 +21,10 @@ public class Dresseur {
     private String password;
 
     @OneToMany(mappedBy = "dresseur")
+    @JsonManagedReference
     private List<Pokemon> pokemons;
 
     @OneToMany(mappedBy = "dresseur")
+    @JsonManagedReference
     private List<Booster> boosters;
 }

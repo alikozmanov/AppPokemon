@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDate;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Data
@@ -16,6 +17,7 @@ public class Booster {
 
     @ManyToOne
     @JoinColumn(name = "dresseur_id")
+    @JsonBackReference
     private Dresseur dresseur;
 
     @ManyToMany
@@ -25,5 +27,4 @@ public class Booster {
             inverseJoinColumns = @JoinColumn(name = "pokemon_id")
     )
     private List<Pokemon> cartes;
-
 }

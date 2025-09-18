@@ -348,3 +348,5 @@ Maquette PC le zoning (répartition des zones) et le wireframe (blocs fonctionne
             Colonne droite → section Échanges avec cartes et bouton Accepter.
 
             Footer → avec Mentions légales et Support.
+
+-------------------------------------------------------------------
