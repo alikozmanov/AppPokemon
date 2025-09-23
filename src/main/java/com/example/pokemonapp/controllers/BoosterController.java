@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/boosters")
@@ -17,9 +16,8 @@ public class BoosterController {
     private BoosterService boosterService;
 
     @PostMapping("/ouvrir/{dresseurId}")
-    public BoosterDTO ouvrir(@PathVariable Long dresseurId, @RequestBody Map<String, String> body) {
-        String type = body.get("type");
-        return boosterService.ouvrirBoosterParType(dresseurId, type);
+    public BoosterDTO ouvrir(@PathVariable Long dresseurId) {
+        return boosterService.ouvrirBooster(dresseurId);
     }
 
     @GetMapping
@@ -27,4 +25,3 @@ public class BoosterController {
         return boosterService.lister();
     }
 }
-

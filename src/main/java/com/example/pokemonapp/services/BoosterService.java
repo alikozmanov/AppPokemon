@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 @Service
 public class BoosterService {
 
@@ -18,9 +19,13 @@ public class BoosterService {
     @Autowired private PokemonRepository pokemonRepo;
     @Autowired private CollectionRepository collectionRepo;
 
+    private static final String[] NOMS = {"Pikachu","Salamèche","Carapuce","Bulbizarre","Roucool","Mewtwo"};
+    private static final String[] TYPES = {"Électrik","Feu","Eau","Plante","Normal","Psy"};
+    private static final String[] RARETES = {"Commune","Peu Commune","Rare","Légendaire"};
     private Random random = new Random();
 
-    public BoosterDTO ouvrirBoosterParType(Long dresseurId, String type) {
+    // Ouvrir un booster pour un dresseur
+    public BoosterDTO ouvrirBooster(Long dresseurId) {
         Dresseur dresseur = dresseurRepo.findById(dresseurId)
                 .orElseThrow(() -> new RuntimeException("Dresseur introuvable"));
 
@@ -31,12 +36,12 @@ public class BoosterService {
         List<Pokemon> cartes = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             Pokemon p = new Pokemon();
-            p.setNom("Pokémon " + (i+1));
-            p.setType(type); // on force le type
+            p.setNom(NOMS[random.nextInt(NOMS.length)]);
+            p.setType(TYPES[random.nextInt(TYPES.length)]);
             p.setNiveau(random.nextInt(50) + 1);
             p.setAttaque(random.nextInt(100));
             p.setDefense(random.nextInt(100));
-            p.setRarete(new String[]{"Commune","Peu Commune","Rare","Légendaire"}[random.nextInt(4)]);
+            p.setRarete(RARETES[random.nextInt(RARETES.length)]);
             p.setDresseur(dresseur);
             pokemonRepo.save(p);
             cartes.add(p);
@@ -53,6 +58,7 @@ public class BoosterService {
         return new BoosterDTO(booster.getId(), booster.getDateOuverture(), cartes);
     }
 
+    // Lister tous les boosters
     public List<BoosterDTO> lister() {
         return boosterRepo.findAll().stream()
                 .map(b -> new BoosterDTO(b.getId(), b.getDateOuverture(), b.getCartes()))
