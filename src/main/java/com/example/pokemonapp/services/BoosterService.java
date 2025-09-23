@@ -1,5 +1,6 @@
 package com.example.pokemonapp.services;
 
+import com.example.pokemonapp.dto.BoosterDTO;
 import com.example.pokemonapp.entities.*;
 import com.example.pokemonapp.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,8 @@ public class BoosterService {
     private static final String[] RARETES = {"Commune","Peu Commune","Rare","Légendaire"};
     private Random random = new Random();
 
-    public Booster ouvrirBooster(Long dresseurId) {
+    // Ouvrir un booster pour un dresseur
+    public BoosterDTO ouvrirBooster(Long dresseurId) {
         Dresseur dresseur = dresseurRepo.findById(dresseurId)
                 .orElseThrow(() -> new RuntimeException("Dresseur introuvable"));
 
@@ -44,7 +46,6 @@ public class BoosterService {
             pokemonRepo.save(p);
             cartes.add(p);
 
-            // Ajout à la collection
             Collection c = new Collection();
             c.setDresseur(dresseur);
             c.setCarte(p);
@@ -52,10 +53,15 @@ public class BoosterService {
         }
 
         booster.setCartes(cartes);
-        return boosterRepo.save(booster);
+        boosterRepo.save(booster);
+
+        return new BoosterDTO(booster.getId(), booster.getDateOuverture(), cartes);
     }
 
-    public List<Booster> lister() {
-        return boosterRepo.findAll();
+    // Lister tous les boosters
+    public List<BoosterDTO> lister() {
+        return boosterRepo.findAll().stream()
+                .map(b -> new BoosterDTO(b.getId(), b.getDateOuverture(), b.getCartes()))
+                .toList();
     }
 }

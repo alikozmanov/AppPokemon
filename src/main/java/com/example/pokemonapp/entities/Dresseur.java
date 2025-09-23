@@ -20,11 +20,10 @@ public class Dresseur {
     private String username;
     private String password;
 
-    @OneToMany(mappedBy = "dresseur")
-    @JsonManagedReference
+    @OneToMany(mappedBy = "dresseur", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Pokemon> pokemons;
 
-    @OneToMany(mappedBy = "dresseur")
-    @JsonManagedReference
+    @OneToMany(mappedBy = "dresseur", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Booster> boosters;
+
 }

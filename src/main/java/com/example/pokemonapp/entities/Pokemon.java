@@ -2,14 +2,16 @@ package com.example.pokemonapp.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Data
 public class Pokemon {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nom;
     private String type;
     private int niveau;
@@ -19,6 +21,6 @@ public class Pokemon {
 
     @ManyToOne
     @JoinColumn(name = "dresseur_id")
-    @JsonBackReference
+    @JsonIgnore
     private Dresseur dresseur;
 }

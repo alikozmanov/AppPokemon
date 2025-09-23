@@ -8,7 +8,6 @@ import java.util.List;
 @Entity
 @Data
 public class Echange {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,7 +23,6 @@ public class Echange {
     @JoinColumn(name = "dresseur2_id")
     private Dresseur dresseur2;
 
-    // Cartes échangées par le dresseur1
     @ManyToMany
     @JoinTable(
             name = "echange_cartes_dresseur1",
@@ -33,7 +31,6 @@ public class Echange {
     )
     private List<Pokemon> cartesDresseur1;
 
-    // Cartes échangées par le dresseur2
     @ManyToMany
     @JoinTable(
             name = "echange_cartes_dresseur2",
@@ -41,5 +38,4 @@ public class Echange {
             inverseJoinColumns = @JoinColumn(name = "carte_id")
     )
     private List<Pokemon> cartesDresseur2;
-
 }

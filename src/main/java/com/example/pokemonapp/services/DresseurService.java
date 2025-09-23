@@ -12,25 +12,30 @@ import java.util.Optional;
 public class DresseurService {
 
     @Autowired
-    private DresseurRepository repo;
+    private DresseurRepository repository;
 
     public List<Dresseur> lister() {
-
-        return repo.findAll();
+        return repository.findAll();
     }
 
     public Optional<Dresseur> rechercher(Long id) {
-
-        return repo.findById(id);
+        return repository.findById(id);
     }
 
-    public Dresseur sauvegarder(Dresseur d) {
-
-        return repo.save(d);
+    public Dresseur sauvegarder(Dresseur dresseur) {
+        return repository.save(dresseur);
     }
 
     public void supprimer(Long id) {
-
-        repo.deleteById(id);
+        repository.findById(id).ifPresent(dresseur -> {
+            if (dresseur.getPokemons() != null) {
+                dresseur.getPokemons().clear();
+            }
+            if (dresseur.getBoosters() != null) {
+                dresseur.getBoosters().clear();
+            }
+            repository.delete(dresseur);
+        });
     }
 }
+

@@ -4,11 +4,12 @@ import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDate;
 import java.util.List;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Data
 public class Booster {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,7 +18,7 @@ public class Booster {
 
     @ManyToOne
     @JoinColumn(name = "dresseur_id")
-    @JsonBackReference
+    @JsonIgnore
     private Dresseur dresseur;
 
     @ManyToMany

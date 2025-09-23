@@ -1,6 +1,6 @@
 package com.example.pokemonapp.controllers;
 
-import com.example.pokemonapp.entities.Booster;
+import com.example.pokemonapp.dto.BoosterDTO;
 import com.example.pokemonapp.services.BoosterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,17 +15,13 @@ public class BoosterController {
     @Autowired
     private BoosterService boosterService;
 
-    // Ouvrir un booster pour un dresseur
     @PostMapping("/ouvrir/{dresseurId}")
-    public Booster ouvrir(@PathVariable Long dresseurId) {
-
+    public BoosterDTO ouvrir(@PathVariable Long dresseurId) {
         return boosterService.ouvrirBooster(dresseurId);
     }
 
-    // Lister tous les boosters ouverts
     @GetMapping
-    public List<Booster> getAll() {
-
+    public List<BoosterDTO> getAll() {
         return boosterService.lister();
     }
 }
