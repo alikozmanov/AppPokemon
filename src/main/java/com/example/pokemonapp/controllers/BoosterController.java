@@ -15,11 +15,19 @@ public class BoosterController {
     @Autowired
     private BoosterService boosterService;
 
+    // Ouvrir un booster pour un dresseur
     @PostMapping("/ouvrir/{dresseurId}")
     public BoosterDTO ouvrir(@PathVariable Long dresseurId) {
         return boosterService.ouvrirBooster(dresseurId);
     }
 
+    // Ouvrir un booster par type pour un dresseur
+    @PostMapping("/ouvrir/{dresseurId}/{type}")
+    public BoosterDTO ouvrirParType(@PathVariable Long dresseurId, @PathVariable String type) {
+        return boosterService.ouvrirBoosterParType(dresseurId, type);
+    }
+
+    // Lister tous les boosters
     @GetMapping
     public List<BoosterDTO> getAll() {
         return boosterService.lister();
