@@ -106,21 +106,14 @@ Les utilisateurs non connectés peuvent uniquement voir les boosters
 6. Contraintes et livrables
 
 Contraintes :
-
 Base de données relationnelle (PostgreSQL)
-
 Interface web responsive
-
 Respect des normes RGPD pour les données utilisateurs
 
 Livrables attendus :
-
 Code source complet
-
 Base de données fonctionnelle
-
 Documentation technique et fonctionnelle
-
 Maquettes et diagrammes UML
 
 7. Architecture logicielle
@@ -214,6 +207,14 @@ CREATE TABLE Echange (
     FOREIGN KEY (id_carte1) REFERENCES Carte(id_carte),
     FOREIGN KEY (id_carte2) REFERENCES Carte(id_carte)
 );
+
+9.1. Relations fonctionnelles entre entités
+Les relations entre les entités traduisent les principales règles métier de l’application Pokémon Collector :
+Un dresseur peut ouvrir plusieurs boosters (relation 1:N).
+Un dresseur possède plusieurs cartes à travers la table Collection (relation 1:N).
+Un échange implique exactement deux dresseurs et deux cartes (relation 1:1).
+Chaque carte appartient à un seul dresseur à un instant donné.
+Les administrateurs disposent de droits de gestion complets sur l’ensemble des entités (cartes, boosters, utilisateurs).
 
 10. Diagramme Entité–Association (conceptuel, textuel)
 [Dresseur] 1 ----- N [Collection] N ----- 1 [Carte]
@@ -350,3 +351,21 @@ Maquette PC le zoning (répartition des zones) et le wireframe (blocs fonctionne
             Footer → avec Mentions légales et Support.
 
 -------------------------------------------------------------------
+WIREFRAME :
+
+1. Page d’accueil
+Header : titre + barre de recherche + profil
+Menu : Gérer Pokémon / Profil / Échanges / Admin
+Zone centrale : choix d’action ou résumé de collection
+
+2. Page Gestion Pokémon / Ouverture booster
+Bouton “Ouvrir booster”
+Grille des cartes obtenues
+
+3. Page Échanges
+Liste des propositions
+Boutons : “Proposer un échange”, “Accepter”
+
+4. Page Profil
+Formulaire : Nom, pseudo, avatar, niveau
+Boutons “Modifier”

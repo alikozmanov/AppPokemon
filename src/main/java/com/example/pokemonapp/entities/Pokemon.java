@@ -18,6 +18,7 @@ public class Pokemon {
     private int attaque;
     private int defense;
     private String rarete;
+    private String imageUrl;
 
     @ManyToOne
     @JoinColumn(name = "dresseur_id")
