@@ -39,8 +39,8 @@ public class PokemonappApplication implements CommandLineRunner {
 			dresseurRepository.saveAll(Arrays.asList(sacha, ondine, pierre));
 
 			// --- Pokémon Eau ---
-			Pokemon carapuce = new Pokemon(); carapuce.setNom("Carapuce"); carapuce.setType("Eau"); carapuce.setNiveau(14); carapuce.setAttaque(48); carapuce.setDefense(65); carapuce.setRarete("Peu Commune"); carapuce.setDresseur(ondine);
-			Pokemon stari = new Pokemon(); stari.setNom("Stari"); stari.setType("Eau"); stari.setNiveau(13); stari.setAttaque(45); stari.setDefense(55); stari.setRarete("Commune"); stari.setDresseur(pierre);
+			Pokemon carapuce = new Pokemon(); carapuce.setNom("Carapuce"); carapuce.setType("Eau"); carapuce.setNiveau(14); carapuce.setAttaque(48); carapuce.setDefense(65); carapuce.setRarete("Peu Commune"); carapuce.setDresseur(ondine); carapuce.setImageUrl("http://localhost:8080/images/carapuce.png");
+			Pokemon stari = new Pokemon(); stari.setNom("Stari"); stari.setType("Eau"); stari.setNiveau(13); stari.setAttaque(45); stari.setDefense(55); stari.setRarete("Commune"); stari.setDresseur(pierre); stari.setImageUrl("http://localhost:8080/images/stari.png");
 			Pokemon magicarpe = new Pokemon(); magicarpe.setNom("Magicarpe"); magicarpe.setType("Eau"); magicarpe.setNiveau(10); magicarpe.setAttaque(10); magicarpe.setDefense(55); magicarpe.setRarete("Commune"); magicarpe.setDresseur(pierre);
 			Pokemon tentacool = new Pokemon(); tentacool.setNom("Tentacool"); tentacool.setType("Eau"); tentacool.setNiveau(12); tentacool.setAttaque(40); tentacool.setDefense(50); tentacool.setRarete("Peu Commune"); tentacool.setDresseur(pierre);
 			Pokemon barpau = new Pokemon(); barpau.setNom("Barpau"); barpau.setType("Eau"); barpau.setNiveau(11); barpau.setAttaque(35); barpau.setDefense(40); barpau.setRarete("Commune"); barpau.setDresseur(sacha);
